@@ -2,3 +2,21 @@ language: go
 
 go:
   - tip
+
+addons:
+  apt:
+    packages:
+      - automake
+      - libtool
+      - libgcrypt11-dev
+      - libgpg-error-dev
+
+# cache:
+#   directories:
+#     - libotr-test/libotr-src
+
+install:
+  - make deps
+  - go get github.com/twstrike/otr3/sexp
+
+script: make ci
